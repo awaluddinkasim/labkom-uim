@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return view('pages.index');
+})->name('index');
+
 
 Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
