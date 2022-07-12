@@ -39,7 +39,7 @@
                     <div class="text-center">
                         <img src="{{ asset('assets/img/logo.png') }}" alt="" class="logo">
                     </div>
-                    <form method="POST">
+                    <form action="{{ route('admin.authenticate') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="email">Email Address</label>

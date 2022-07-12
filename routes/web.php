@@ -24,6 +24,7 @@ Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
     Route::get('/dosen/login', [AuthController::class, 'loginPageDosen'])->name('dosen.login');
     Route::get('/admin/login', [AuthController::class, 'loginPageAdmin'])->name('admin.login');
+    Route::post('/admin/login', [AuthController::class, 'loginAdmin'])->name('admin.authenticate');
 });
 
 
