@@ -24,11 +24,7 @@ class AuthController extends Controller
 
     public function loginAdmin(Request $request)
     {
-        if ($request->remember) {
-            $remember = true;
-        } else {
-            $remember = false;
-        }
+        $remember = $request->remember? true :false;
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->route('admin.dashboard');
         }
