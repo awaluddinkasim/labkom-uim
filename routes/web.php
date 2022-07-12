@@ -24,7 +24,7 @@ Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
 
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['middleware' => 'auth:admin','prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/akun/{jenis}', [AdminController::class, 'akun'])->name('akun');
 });
