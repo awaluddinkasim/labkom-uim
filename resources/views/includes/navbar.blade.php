@@ -7,7 +7,7 @@
                 <div class="d-sm-none d-lg-inline-block">Hi, Nanda</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">Logged in 5 min ago</div>
+                <div class="dropdown-title">Selamat datang</div>
                 <a href="features-profile.html" class="dropdown-item has-icon">
                     <ion-icon name="person-outline"></ion-icon>
                     Profile
