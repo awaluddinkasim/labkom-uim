@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['auth', 'auth:admin', 'auth:dosen'])->group(function() {
+Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
     Route::get('/dosen/login', [AuthController::class, 'loginPageDosen'])->name('dosen.login');
     Route::get('/admin/login', [AuthController::class, 'loginPageAdmin'])->name('admin.login');
