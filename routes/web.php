@@ -19,7 +19,6 @@ Route::get('/', function() {
     return view('pages.index');
 })->name('index');
 
-
 Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
     Route::get('/dosen/login', [AuthController::class, 'loginPageDosen'])->name('dosen.login');
@@ -27,9 +26,9 @@ Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
     Route::post('/admin/login', [AuthController::class, 'loginAdmin'])->name('admin.authenticate');
 });
 
-
-
 Route::group(['middleware' => 'auth:admin','prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/akun/{jenis}', [AdminController::class, 'akun'])->name('akun');
+
+    Route::get('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
 });

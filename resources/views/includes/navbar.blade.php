@@ -12,7 +12,7 @@
                     <ion-icon name="person-outline"></ion-icon>
                     Profile
                 </a>
-                <a href="#" class="dropdown-item has-icon text-danger">
+                <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger">
                     <ion-icon name="exit-outline"></ion-icon>
                     Logout
                 </a>

@@ -34,4 +34,10 @@ class AuthController extends Controller
         }
         return redirect()->back()->with('Email atau Password salah!');
     }
+
+    public function logoutAdmin()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
+    }
 }
