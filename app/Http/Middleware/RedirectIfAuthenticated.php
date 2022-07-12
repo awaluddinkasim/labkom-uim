@@ -7,6 +7,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\returnSelf;
+
 class RedirectIfAuthenticated
 {
     /**
@@ -23,7 +25,19 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                switch ($guard) {
+                    case 'admin':
+                        return redirect()->route('admin.dashboard');
+
+                    case 'dosen':
+                        return redirect()->route('dosen.dashboard');
+
+                    case 'user':
+                        return redirect()->route('user.dashboard');
+
+                    default:
+                        return redirect()->route('index');
+                }
             }
         }
 
