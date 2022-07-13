@@ -67,7 +67,14 @@ class AdminController extends Controller
                 return redirect()->back()->with('success', 'Program Studi berhasil ditambah');
 
             case 'praktikum':
-                break;
+                $prak = new Praktikum();
+                $prak->id_prodi = $request->prodi;
+                $prak->nama = $request->nama;
+                $prak->semester = $request->semester;
+                $prak->kategori = $request->semester % 2 == 0 ? 'genap' : 'ganjil';
+                $prak->save();
+
+                return redirect()->back()->with('success', 'Praktikum berhasil ditambah');
 
             default:
                 return redirect()->route('admin.dashboard');
@@ -86,7 +93,8 @@ class AdminController extends Controller
                 return redirect()->back()->with('success', 'Program Studi berhasil dihapus');
 
             case 'praktikum':
-                break;
+                Praktikum::find($request->id)->delete();
+                return redirect()->back()->with('success', 'Praktikum berhasil dihapus');
 
             default:
                 return redirect()->route('admin.dashboard');
