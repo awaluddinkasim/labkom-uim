@@ -14,43 +14,44 @@
                 <div class="col-lg-7">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Fakultas</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($daftarFakultas as $fakultas)
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $fakultas->nama }}</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-info btn-sm">
-                                                    <ion-icon name="create"></ion-icon>
-                                                </button>
-                                                <form action="" class="d-inline"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <input type="hidden" name="id" value="{{ $fakultas->id }}">
-                                                    <button class="btn btn-danger btn-sm" type="submit">
-                                                        <ion-icon name="trash"></ion-icon>
+                                            <th>No</th>
+                                            <th>Nama Fakultas</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($daftarFakultas as $fakultas)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $fakultas->nama }}</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-info btn-sm">
+                                                        <ion-icon name="create"></ion-icon>
                                                     </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="3" class="text-center">
-                                                <i>Tidak ada data</i>
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                                                    <form action="" class="d-inline" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="id" value="{{ $fakultas->id }}">
+                                                        <button class="btn btn-danger btn-sm" type="submit">
+                                                            <ion-icon name="trash"></ion-icon>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="3" class="text-center">
+                                                    <i>Tidak ada data</i>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
