@@ -26,9 +26,10 @@ Route::middleware(['guest', 'guest:admin', 'guest:dosen'])->group(function() {
     Route::post('/admin/login', [AuthController::class, 'loginAdmin'])->name('admin.authenticate');
 });
 
-Route::group(['middleware' => 'auth:admin','prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/akun/{jenis}', [AdminController::class, 'akun'])->name('akun');
+    Route::delete('/akun/{jenis}', [AdminController::class, 'akunDelete'])->name('akun-delete');
 
     Route::get('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
 });
