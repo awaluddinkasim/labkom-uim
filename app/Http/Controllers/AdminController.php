@@ -14,6 +14,20 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    public function masterData($jenis)
+    {
+        switch ($jenis) {
+            case 'prodi':
+                return view('admin.master-prodi');
+
+            case 'mata-kuliah':
+                return view('admin.master-matkul');
+
+            default:
+                return redirect()->route('admin.dashboard');
+        }
+    }
+
     public function akun($jenis)
     {
         switch ($jenis) {

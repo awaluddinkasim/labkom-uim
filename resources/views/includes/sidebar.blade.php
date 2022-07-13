@@ -14,14 +14,14 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown {{ Request::segment(2) == "master" ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <ion-icon name="apps-outline"></ion-icon>
                     <span>Master Data</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Program Studi</a></li>
-                    <li><a class="nav-link" href="#">Mata Kuliah</a></li>
+                    <li class="{{ Request::segment(3) == "prodi" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'prodi') }}">Program Studi</a></li>
+                    <li class="{{ Request::segment(3) == "mata-kuliah" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'mata-kuliah') }}">Mata Kuliah</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown {{ Request::segment(2) == "akun" ? 'active' : '' }}">
