@@ -36,6 +36,8 @@
         </div>
     </div>
 
+    @stack('modals')
+
     @include('includes.scripts')
     @stack('scripts')
 </body>

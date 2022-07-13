@@ -18,7 +18,11 @@ class AdminController extends Controller
     {
         switch ($jenis) {
             case 'dosen':
-                return view('admin.akun-dosen');
+                $data = [
+                    'daftarDosen' => Dosen::orderBy('nama')->get()
+                ];
+
+                return view('admin.akun-dosen', $data);
 
             case 'mahasiswa':
                 return view('admin.akun-mahasiswa');
