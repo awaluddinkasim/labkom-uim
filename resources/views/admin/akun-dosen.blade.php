@@ -29,7 +29,7 @@
                                         <button class="btn btn-primary btn-sm">
                                             <ion-icon name="open"></ion-icon>
                                         </button>
-                                        <form action="{{ route('admin.akun-delete', 'dosen') }}" class="form-inline"
+                                        <form action="{{ route('admin.akun-delete', 'dosen') }}" class="d-inline"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
