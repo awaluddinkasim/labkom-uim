@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('prodi', function (Blueprint $table) {
             $table->id();
-            $table->string('id_fakultas');
+            $table->foreignId('id_fakultas');
             $table->string('nama');
             $table->timestamps();
+
+            $table->foreign('id_fakultas')->references('id')->on('fakultas')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
