@@ -88,15 +88,11 @@
 @endpush
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/css/responsive.bootstrap4.css') }}">
+    @include('includes.datatables.styles')
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('assets/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
+    @include('includes.datatables.scripts')
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
