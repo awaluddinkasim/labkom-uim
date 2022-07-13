@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Fakultas;
+use App\Models\Praktikum;
 use App\Models\Prodi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,7 +36,12 @@ class AdminController extends Controller
                 return view('admin.master-prodi', $data);
 
             case 'praktikum':
-                return view('admin.master-praktikum');
+                $data = [
+                    'daftarFakultas' => Fakultas::orderBy('nama')->get(),
+                    'daftarPraktikum' => Praktikum::orderBy('nama')->get()
+                ];
+
+                return view('admin.master-praktikum', $data);
 
             default:
                 return redirect()->route('admin.dashboard');
