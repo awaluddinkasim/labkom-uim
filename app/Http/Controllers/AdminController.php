@@ -34,8 +34,8 @@ class AdminController extends Controller
 
                 return view('admin.master-prodi', $data);
 
-            case 'mata-kuliah':
-                return view('admin.master-matkul');
+            case 'praktikum':
+                return view('admin.master-praktikum');
 
             default:
                 return redirect()->route('admin.dashboard');
@@ -60,7 +60,7 @@ class AdminController extends Controller
 
                 return redirect()->back()->with('success', 'Program Studi berhasil ditambah');
 
-            case 'mata-kuliah':
+            case 'praktikum':
                 break;
 
             default:
@@ -79,7 +79,7 @@ class AdminController extends Controller
                 Prodi::find($request->id)->delete();
                 return redirect()->back()->with('success', 'Program Studi berhasil dihapus');
 
-            case 'mata-kuliah':
+            case 'praktikum':
                 break;
 
             default:

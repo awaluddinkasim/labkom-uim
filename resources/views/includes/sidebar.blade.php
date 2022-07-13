@@ -22,7 +22,7 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::segment(3) == "fakultas" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'fakultas') }}">Fakultas</a></li>
                     <li class="{{ Request::segment(3) == "prodi" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'prodi') }}">Program Studi</a></li>
-                    <li class="{{ Request::segment(3) == "mata-kuliah" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'mata-kuliah') }}">Mata Kuliah</a></li>
+                    <li class="{{ Request::segment(3) == "praktikum" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'praktikum') }}">Praktikum</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown {{ Request::segment(2) == "akun" ? 'active' : '' }}">

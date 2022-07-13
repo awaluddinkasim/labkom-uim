@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengampuh_matkul', function (Blueprint $table) {
+        Schema::create('pengampuh_praktikum', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_dosen');
-            $table->foreignId('id_matkul');
+            $table->foreignId('id_praktikum');
             $table->timestamps();
 
             $table->foreign('id_dosen')->references('id')->on('dosens')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreign('id_matkul')->references('id')->on('matkul')
+            $table->foreign('id_praktikum')->references('id')->on('praktikum')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengampuh_matkul');
+        Schema::dropIfExists('pengampuh_praktikum');
     }
 };

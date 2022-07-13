@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('matkul', function (Blueprint $table) {
+        Schema::create('praktikum', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->integer('semester');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matkul');
+        Schema::dropIfExists('praktikum');
     }
 };

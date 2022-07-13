@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Master Mata Kuliah</h1>
+            <h1>Master Praktikum</h1>
         </div>
 
         <div class="section-body">
