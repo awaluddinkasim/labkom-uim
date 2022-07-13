@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('password');
             $table->string('foto')->default('default.png');
-            $table->foreignId('id_jurusan');
+            $table->foreignId('id_prodi');
             $table->enum('active', ['0', '1'])->default('0');
             $table->enum('level', ['asisten', 'mahasiswa'])->default('mahasiswa');
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('id_jurusan')->references('id')->on('jurusan')
+            $table->foreign('id_prodi')->references('id')->on('prodi')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });

@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('nama');
             $table->integer('semester');
             $table->enum('kategori', ['Ganjil', 'Genap']);
-            $table->foreignId('id_jurusan');
+            $table->foreignId('id_prodi');
             $table->timestamps();
 
-            $table->foreign('id_jurusan')->references('id')->on('jurusan')
+            $table->foreign('id_prodi')->references('id')->on('prodi')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });
