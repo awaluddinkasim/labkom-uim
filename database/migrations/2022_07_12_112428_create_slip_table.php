@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('slip', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_matkul');
+            $table->foreignId('id_praktikum');
             $table->string('nim');
             $table->string('nama_mhs');
             $table->string('slip');
             $table->integer('nominal');
             $table->timestamps();
 
-            $table->foreign('id_matkul')->references('id')->on('matkul')
+            $table->foreign('id_praktikum')->references('id')->on('praktikum')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });
