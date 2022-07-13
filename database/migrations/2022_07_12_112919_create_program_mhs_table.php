@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('program_mhs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user');
-            $table->foreignId('id_matkul');
+            $table->foreignId('id_praktikum');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreign('id_matkul')->references('id')->on('matkul')
+            $table->foreign('id_praktikum')->references('id')->on('praktikum')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });
