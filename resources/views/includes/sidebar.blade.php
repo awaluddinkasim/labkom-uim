@@ -20,6 +20,7 @@
                     <span>Master Data</span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li class="{{ Request::segment(3) == "fakultas" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'fakultas') }}">Fakultas</a></li>
                     <li class="{{ Request::segment(3) == "prodi" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'prodi') }}">Program Studi</a></li>
                     <li class="{{ Request::segment(3) == "mata-kuliah" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.master', 'mata-kuliah') }}">Mata Kuliah</a></li>
                 </ul>
