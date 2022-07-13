@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIDN</th>
                                 <th>Nama Lengkap</th>
                                 <th></th>
                             </tr>
@@ -24,6 +25,7 @@
                             @foreach ($daftarDosen as $dosen)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $dosen->nidn }}</td>
                                     <td>{{ $dosen->nama }}</td>
                                     <td class="text-center">
                                         <button class="btn btn-primary btn-sm">
