@@ -27,9 +27,9 @@
                                 @forelse ($daftarJurusan as $prodi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td></td>
+                                    <td>{{ $prodi->fakultas->nama }}</td>
                                     <td>{{ $prodi->nama }}</td>
-                                    <td></td>
+                                    <td>{{ $prodi->mahasiswa->count() }}</td>
                                     <td class="text-center">
                                         <button class="btn btn-info btn-sm">
                                             <ion-icon name="create"></ion-icon>
