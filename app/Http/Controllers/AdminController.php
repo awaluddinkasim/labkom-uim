@@ -68,6 +68,25 @@ class AdminController extends Controller
         }
     }
 
+    public function masterDataDelete(Request $request, $jenis)
+    {
+        switch ($jenis) {
+            case 'fakultas':
+                Fakultas::find($request->id)->delete();
+                return redirect()->back()->with('success', 'Fakultas berhasil dihapus');
+
+            case 'prodi':
+                Prodi::find($request->id)->delete();
+                return redirect()->back()->with('success', 'Program Studi berhasil dihapus');
+
+            case 'mata-kuliah':
+                break;
+
+            default:
+                return redirect()->route('admin.dashboard');
+        }
+    }
+
     public function akun($jenis)
     {
         switch ($jenis) {
