@@ -42,6 +42,32 @@ class AdminController extends Controller
         }
     }
 
+    public function masterDataStore(Request $request, $jenis)
+    {
+        switch ($jenis) {
+            case 'fakultas':
+                $fak = new Fakultas();
+                $fak->nama = $request->fakultas;
+                $fak->save();
+
+                return redirect()->back()->with('success', 'Fakultas berhasil ditambah');
+
+            case 'prodi':
+                $data = [
+                    'daftarFakultas' => Fakultas::orderBy('nama')->get(),
+                    'daftarJurusan' => Prodi::orderBy('id_fakultas')->get()
+                ];
+
+                return view('admin.master-prodi', $data);
+
+            case 'mata-kuliah':
+                return view('admin.master-matkul');
+
+            default:
+                return redirect()->route('admin.dashboard');
+        }
+    }
+
     public function akun($jenis)
     {
         switch ($jenis) {
