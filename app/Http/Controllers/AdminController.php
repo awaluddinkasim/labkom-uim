@@ -53,15 +53,15 @@ class AdminController extends Controller
                 return redirect()->back()->with('success', 'Fakultas berhasil ditambah');
 
             case 'prodi':
-                $data = [
-                    'daftarFakultas' => Fakultas::orderBy('nama')->get(),
-                    'daftarJurusan' => Prodi::orderBy('id_fakultas')->get()
-                ];
+                $prodi = new Prodi();
+                $prodi->id_fakultas = $request->fakultas;
+                $prodi->nama = $request->prodi;
+                $prodi->save();
 
-                return view('admin.master-prodi', $data);
+                return redirect()->back()->with('success', 'Program Studi berhasil ditambah');
 
             case 'mata-kuliah':
-                return view('admin.master-matkul');
+                break;
 
             default:
                 return redirect()->route('admin.dashboard');
