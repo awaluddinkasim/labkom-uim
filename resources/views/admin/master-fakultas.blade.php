@@ -11,7 +11,7 @@
 
         <div class="section-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-7">
                     <div class="card">
                         <div class="card-body">
                             <table class="table table-hover">
@@ -28,14 +28,14 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $fakultas->nama }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-success btn-sm">
+                                                <button class="btn btn-info btn-sm">
                                                     <ion-icon name="create"></ion-icon>
                                                 </button>
                                                 <form action="" class="d-inline"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <input type="hidden" name="id" value="{{ $dosen->id }}">
+                                                    <input type="hidden" name="id" value="{{ $fakultas->id }}">
                                                     <button class="btn btn-danger btn-sm" type="submit">
                                                         <ion-icon name="trash"></ion-icon>
                                                     </button>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-5">
                     <img src="{{ asset('assets/img/master-data.svg') }}" class="w-100">
                 </div>
             </div>
