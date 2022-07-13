@@ -25,7 +25,11 @@ class AdminController extends Controller
                 return view('admin.akun-dosen', $data);
 
             case 'mahasiswa':
-                return view('admin.akun-mahasiswa');
+                $data = [
+                    'daftarUser' => User::orderBy('nim')->orderBy('active')->get()
+                ];
+
+                return view('admin.akun-mahasiswa', $data);
 
             default:
                 return redirect()->route('admin.dashboard');
