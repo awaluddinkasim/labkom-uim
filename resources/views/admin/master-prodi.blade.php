@@ -4,7 +4,7 @@
     <section class="section">
         <div class="section-header">
             <h1 class="mr-auto">Master Program Studi</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal" {{ $daftarFakultas->count() > 0 ? '' : 'disabled' }}>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
                 Tambah
             </button>
         </div>
@@ -25,6 +25,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                @if ($daftarFakultas->count() > 0)
                 <form action="" method="POST">
                     @csrf
                     <div class="modal-body">
@@ -48,6 +49,14 @@
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </form>
+                @else
+                <div class="modal-body py-5 text-center">
+                    <p>Harap isi data fakultas terlebih dahulu</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+                @endif
             </div>
         </div>
     </div>
