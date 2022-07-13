@@ -57,4 +57,15 @@ class AdminController extends Controller
                 return redirect()->route('admin.dashboard');
         }
     }
+
+    public function akunDosenStore(Request $request)
+    {
+        $dosen = new Dosen();
+        $dosen->nidn = $request->nidn;
+        $dosen->nama = $request->nama;
+        $dosen->password = bcrypt($request->password);
+        $dosen->save();
+
+        return redirect()->back()->with('success', 'Berhasil menambah akun');
+    }
 }
