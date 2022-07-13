@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Models\Fakultas;
+use App\Models\Prodi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -17,8 +19,20 @@ class AdminController extends Controller
     public function masterData($jenis)
     {
         switch ($jenis) {
+            case 'fakultas':
+                $data = [
+                    'daftarFakultas' => Fakultas::orderBy('nama')->get()
+                ];
+
+                return view('admin.master-fakultas', $data);
+
             case 'prodi':
-                return view('admin.master-prodi');
+                $data = [
+                    'daftarFakultas' => Fakultas::orderBy('nama')->get(),
+                    'daftarJurusan' => Prodi::orderBy('id_fakultas')->get()
+                ];
+
+                return view('admin.master-prodi', $data);
 
             case 'mata-kuliah':
                 return view('admin.master-matkul');
