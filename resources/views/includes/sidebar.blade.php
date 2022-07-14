@@ -35,8 +35,8 @@
                     <li class="{{ Request::segment(3) == "mahasiswa" ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.akun', 'mahasiswa') }}">Mahasiswa</a></li>
                 </ul>
             </li>
-            <li>
-                <a class="nav-link" href="#">
+            <li class="{{ Request::segment(2) == "slip" ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.slip') }}">
                     <ion-icon name="receipt-outline"></ion-icon>
                     <span>Slip Pembayaran</span>
                 </a>
