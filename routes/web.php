@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
 
     Route::get('/akun/dosen/{id}', [AdminController::class, 'akunDosenDetail'])->name('dosen-detail');
     Route::post('/akun/dosen/{id}', [AdminController::class, 'akunDosenPraktikum'])->name('dosen-praktikum');
+    Route::delete('/akun/dosen/{id}', [AdminController::class, 'akunDosenPraktikumDelete'])->name('dosen-praktikum-delete');
 
     Route::get('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
 });

@@ -184,4 +184,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Praktikum berhasil ditambah');
     }
+
+    public function akunDosenPraktikumDelete(Request $request, $id)
+    {
+        DataPengampu::find($request->id)->delete();
+
+        return redirect()->back()->with('success', 'Praktikum berhasil dihapus');
+    }
 }
