@@ -10,4 +10,9 @@ class Slip extends Model
     use HasFactory;
 
     protected $table = 'slip';
+
+    public function praktikum()
+    {
+        return $this->belongsTo(Praktikum::class, 'id_praktikum');
+    }
 }

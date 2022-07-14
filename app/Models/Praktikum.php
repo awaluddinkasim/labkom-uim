@@ -15,4 +15,9 @@ class Praktikum extends Model
     {
         return $this->hasMany(DataPraktikan::class, 'id_praktikum');
     }
+
+    public function slip()
+    {
+        return $this->hasMany(Slip::class, 'id_praktikum');
+    }
 }
