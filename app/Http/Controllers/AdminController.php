@@ -149,6 +149,15 @@ class AdminController extends Controller
         }
     }
 
+    public function akunDosenDetail($id)
+    {
+        $data = [
+            'dosen' => Dosen::find($id)
+        ];
+
+        return view('admin.akun-dosen-detail', $data);
+    }
+
     public function akunDosenStore(Request $request)
     {
         $dosen = new Dosen();
