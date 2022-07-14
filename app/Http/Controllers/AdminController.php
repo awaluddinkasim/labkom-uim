@@ -197,6 +197,7 @@ class AdminController extends Controller
     {
         if ($request->has('p')) {
             $data = [
+                'praktikum' => Praktikum::find($request->p)->nama,
                 'daftarSlip' => Slip::where('id_praktikum', $request->p)->orderBy('tgl_slip')->get()
             ];
 
