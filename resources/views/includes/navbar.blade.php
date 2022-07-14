@@ -1,6 +1,9 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <ul class="navbar-nav navbar-right ml-auto">
+    <ul class="navbar-nav mr-auto">
+        <li><a href="javascript:void(0)" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('f/avatar/'.auth()->user()->foto) }}" class="rounded-circle mr-1">
