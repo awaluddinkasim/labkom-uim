@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/akun/dosen', [AdminController::class, 'akunDosenStore'])->name('akun-dosen-store');
 
     Route::get('/akun/dosen/{id}', [AdminController::class, 'akunDosenDetail'])->name('dosen-detail');
+    Route::post('/akun/dosen/{id}', [AdminController::class, 'akunDosenPraktikum'])->name('dosen-praktikum');
 
     Route::get('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
 });

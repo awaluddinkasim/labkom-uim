@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPengampu;
 use App\Models\Dosen;
 use App\Models\Fakultas;
 use App\Models\Praktikum;
@@ -149,6 +150,17 @@ class AdminController extends Controller
         }
     }
 
+    public function akunDosenStore(Request $request)
+    {
+        $dosen = new Dosen();
+        $dosen->nidn = $request->nidn;
+        $dosen->nama = $request->nama;
+        $dosen->password = bcrypt($request->password);
+        $dosen->save();
+
+        return redirect()->back()->with('success', 'Berhasil menambah akun');
+    }
+
     public function akunDosenDetail($id)
     {
         $data = [
@@ -159,14 +171,17 @@ class AdminController extends Controller
         return view('admin.akun-dosen-detail', $data);
     }
 
-    public function akunDosenStore(Request $request)
+    public function akunDosenPraktikum(Request $request, $id)
     {
-        $dosen = new Dosen();
-        $dosen->nidn = $request->nidn;
-        $dosen->nama = $request->nama;
-        $dosen->password = bcrypt($request->password);
-        $dosen->save();
+        $check = DataPengampu::where('id_dosen', $id)->where('id_praktikum', $request->praktikum)->first();
+        if ($check) {
+            return redirect()->back()->with('success', 'Gagal, praktikum sudah terdaftar sebelumnya');
+        }
+        $data = new DataPengampu();
+        $data->id_dosen = $id;
+        $data->id_praktikum = $request->praktikum;
+        $data->save();
 
-        return redirect()->back()->with('success', 'Berhasil menambah akun');
+        return redirect()->back()->with('success', 'Praktikum berhasil ditambah');
     }
 }
