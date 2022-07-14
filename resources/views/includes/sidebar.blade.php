@@ -10,13 +10,13 @@
             <li class="menu-header">Dashboard</li>
             <li class="{{ Request::is('admin') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                    <ion-icon name="grid-outline"></ion-icon>
+                    <ion-icon name="grid"></ion-icon>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="nav-item dropdown {{ Request::segment(2) == "master" ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <ion-icon name="apps-outline"></ion-icon>
+                    <ion-icon name="apps"></ion-icon>
                     <span>Master Data</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -27,7 +27,7 @@
             </li>
             <li class="nav-item dropdown {{ Request::segment(2) == "akun" ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
-                    <ion-icon name="people-outline"></ion-icon>
+                    <ion-icon name="people"></ion-icon>
                     <span>Akun</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -37,13 +37,13 @@
             </li>
             <li class="{{ Request::segment(2) == "slip" ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.slip') }}">
-                    <ion-icon name="receipt-outline"></ion-icon>
+                    <ion-icon name="receipt"></ion-icon>
                     <span>Slip Pembayaran</span>
                 </a>
             </li>
             <li>
                 <a class="nav-link" href="#">
-                    <ion-icon name="settings-outline"></ion-icon>
+                    <ion-icon name="settings"></ion-icon>
                     <span>Pengaturan</span>
                 </a>
             </li>
