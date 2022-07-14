@@ -28,7 +28,7 @@
                                     <td>{{ $dosen->nidn }}</td>
                                     <td>{{ $dosen->nama }}</td>
                                     <td class="text-center">
-                                        <button class="btn btn-primary btn-sm">
+                                        <button class="btn btn-primary btn-sm" onclick="document.location.href = '{{ route('admin.dosen-detail', $dosen->id) }}'">
                                             <ion-icon name="open"></ion-icon>
                                         </button>
                                         <form action="{{ route('admin.akun-delete', 'dosen') }}" class="d-inline"
