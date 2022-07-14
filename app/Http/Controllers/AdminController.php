@@ -152,7 +152,8 @@ class AdminController extends Controller
     public function akunDosenDetail($id)
     {
         $data = [
-            'dosen' => Dosen::find($id)
+            'dosen' => Dosen::find($id),
+            'daftarPraktikum' => Praktikum::orderBy('nama')->get()
         ];
 
         return view('admin.akun-dosen-detail', $data);
