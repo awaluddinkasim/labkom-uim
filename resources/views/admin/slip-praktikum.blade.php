@@ -25,7 +25,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $praktikum->nama }}</td>
                                     <td>{{ $praktikum->praktikan->count() }}</td>
-                                    <td></td>
+                                    <td>{{ $praktikum->slip->count() }}</td>
                                 </tr>
                             @empty
                                 <tr>

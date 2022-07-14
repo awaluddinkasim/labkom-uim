@@ -7,6 +7,7 @@ use App\Models\Dosen;
 use App\Models\Fakultas;
 use App\Models\Praktikum;
 use App\Models\Prodi;
+use App\Models\Slip;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -199,5 +200,14 @@ class AdminController extends Controller
         ];
 
         return view('admin.slip-praktikum', $data);
+    }
+
+    public function slipPraktikumDetail($idPraktikum)
+    {
+        $data = [
+            'daftarSlip' => Slip::where('id_praktikum', $idPraktikum)->get()
+        ];
+
+        return view('admin.slip-praktikum-detail', $data);
     }
 }

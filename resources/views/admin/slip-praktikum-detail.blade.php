@@ -21,10 +21,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($daftarSlip as $slip)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $slip->nim }}</td>
+                            <td>{{ $slip->nama }}</td>
                             <td></td>
                             <td></td>
                             <td class="text-center">
@@ -33,6 +34,7 @@
                                 </button>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

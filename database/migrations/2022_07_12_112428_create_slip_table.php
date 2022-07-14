@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nim');
             $table->string('nama_mhs');
             $table->string('slip');
+            $table->date('tgl_slip');
             $table->integer('nominal');
             $table->timestamps();
 
