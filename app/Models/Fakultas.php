@@ -13,6 +13,6 @@ class Fakultas extends Model
 
     public function prodi()
     {
-        return $this->hasMany(Prodi::class, 'id_fakultas');
+        return $this->hasMany(Prodi::class, 'id_fakultas')->orderBy('nama');
     }
 }
