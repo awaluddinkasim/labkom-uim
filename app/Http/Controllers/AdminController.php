@@ -193,21 +193,19 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Praktikum berhasil dihapus');
     }
 
-    public function slipPraktikum()
+    public function slipPraktikum(Request $request)
     {
+        if ($request->has('p')) {
+            $data = [
+                'daftarSlip' => Slip::where('id_praktikum', $request->p)->orderBy('tgl_slip')->get()
+            ];
+
+            return view('admin.slip-praktikum-detail', $data);
+        }
         $data = [
             'daftarPraktikum' => Praktikum::orderBy('nama')->get()
         ];
 
         return view('admin.slip-praktikum', $data);
-    }
-
-    public function slipPraktikumDetail($idPraktikum)
-    {
-        $data = [
-            'daftarSlip' => Slip::where('id_praktikum', $idPraktikum)->get()
-        ];
-
-        return view('admin.slip-praktikum-detail', $data);
     }
 }

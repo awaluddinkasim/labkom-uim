@@ -26,8 +26,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $slip->nim }}</td>
                             <td>{{ $slip->nama }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>Rp. {{ number_format($slip->nominal) }}</td>
+                            <td>{{ Carbon\Carbon::parse($slip->tgl_slip)->isoFormat('D MMMM YYYY') }}</td>
                             <td class="text-center">
                                 <button class="btn btn-info btn-sm">
                                     <ion-icon name="open"></ion-icon>

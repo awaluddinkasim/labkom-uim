@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                             @forelse ($daftarPraktikum as $praktikum)
-                                <tr>
+                                <tr onclick="document.location.href = '{{ route('admin.slip') }}?p={{ $praktikum->id }}'">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $praktikum->nama }}</td>
                                     <td>{{ $praktikum->praktikan->count() }}</td>
