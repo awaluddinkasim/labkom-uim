@@ -3,7 +3,15 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h1>{{ $praktikum }}</h1>
+        <h1 class="mr-auto">{{ $praktikum }}</h1>
+        <div class="d-none d-md-block">
+            <div class="btn btn-success">
+                <i class="fas fa-file-excel"></i>
+            </div>
+            <div class="btn btn-danger">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+        </div>
     </div>
 
     <div class="section-body">
