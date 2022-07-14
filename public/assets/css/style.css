@@ -3435,11 +3435,10 @@ body.layout-3 .main-footer {
 }
 .main-sidebar .sidebar-menu li a ion-icon {
   width: 25px;
-  margin-right: 20px;
   text-align: center;
 }
 .main-sidebar .sidebar-menu li a span {
-  margin-top: 3px;
+  margin-left: 20px;
   width: 100%;
 }
 .main-sidebar .sidebar-menu li a:hover {
