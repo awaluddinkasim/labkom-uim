@@ -10,4 +10,9 @@ class DataPengampu extends Model
     use HasFactory;
 
     protected $table = 'data_pengampu';
+
+    public function praktikum()
+    {
+        return $this->belongsTo(Praktikum::class, 'id_praktikum');
+    }
 }
