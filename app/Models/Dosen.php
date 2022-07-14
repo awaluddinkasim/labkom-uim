@@ -30,4 +30,9 @@ class Dosen extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function dataPraktikum()
+    {
+        return $this->hasMany(DataPengampu::class, 'id_dosen');
+    }
 }
