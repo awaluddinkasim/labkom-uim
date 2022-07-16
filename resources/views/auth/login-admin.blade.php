@@ -29,6 +29,23 @@
 
 <body class="bg-primary d-flex justify-content-center align-items-center">
 
+    @if (Session::has('failed'))
+        <div class="position-fixed p-3" style="z-index: 5; right: 0; bottom: 0;">
+            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true"
+                data-autohide="false">
+                <div class="toast-header">
+                    <strong class="mr-auto">Gagal login</strong>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body px-5 py-3">
+                    {{ Session::get('failed') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="card card-login">
         <div class="card-body px-5 py-4">
             <div class="row">
@@ -63,6 +80,13 @@
 
     <script src="{{ asset('assets/plugins/jquery/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    @if (Session::has('failed'))
+    <script>
+        $(document).ready(function() {
+            $('#liveToast').toast('show');
+        });
+    </script>
+    @endif
 </body>
 
 </html>
