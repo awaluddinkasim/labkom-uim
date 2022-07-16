@@ -11,9 +11,16 @@ class DataPraktikan extends Model
 
     protected $table = 'data_praktikan';
 
+    protected $with = ['praktikum'];
+
     public function praktikan()
     {
         return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function pengampu()
+    {
+        return $this->belongsTo(Dosen::class, 'nidn_dosen', 'nidn');
     }
 
     public function praktikum()
