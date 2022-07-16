@@ -32,7 +32,7 @@ class AdminController extends Controller
             case 'prodi':
                 $data = [
                     'daftarFakultas' => Fakultas::orderBy('nama')->get(),
-                    'daftarJurusan' => Prodi::orderBy('id_fakultas')->get()
+                    'daftarJurusan' => Prodi::orderBy('id_fakultas')->orderBy('nama')->get()
                 ];
 
                 return view('admin.master-prodi', $data);
