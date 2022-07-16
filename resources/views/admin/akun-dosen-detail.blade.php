@@ -3,7 +3,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{ $dosen->nama }}</h1>
+            <h1 class="mr-auto">{{ $dosen->nama }}</h1>
+            <button class="btn btn-info">
+                <i class="fas fa-edit"></i>
+            </button>
         </div>
 
         <div class="section-body">
