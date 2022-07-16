@@ -103,6 +103,41 @@ class AdminController extends Controller
         }
     }
 
+    public function masterDataEdit(Request $request, $jenis)
+    {
+        if ($request->has('id')) {
+            switch ($jenis) {
+                case 'fakultas':
+                    $data = [
+                        'fakultas' => Fakultas::find($request->id)
+                    ];
+
+                    return view('admin.master-fakultas-edit', $data);
+
+                case 'prodi':
+                    $data = [
+                        'daftarFakultas' => Fakultas::orderBy('nama')->get(),
+                        'prodi' => Prodi::find($request->id)
+                    ];
+
+                    return view('admin.master-prodi-edit', $data);
+
+                case 'praktikum':
+                    $data = [
+                        'daftarFakultas' => Fakultas::orderBy('nama')->get(),
+                        'praktikum' => Praktikum::find($request->id)
+                    ];
+
+                    return view('admin.master-praktikum-edit', $data);
+
+                default:
+                    return redirect()->route('admin.dashboard');
+            }
+        } else {
+            return redirect()->route('admin.master', $jenis);
+        }
+    }
+
     public function akun($jenis)
     {
         switch ($jenis) {

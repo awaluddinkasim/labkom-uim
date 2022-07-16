@@ -30,7 +30,7 @@
                                 <td>{{ $praktikum->semester }}</td>
                                 <td>{{ ucfirst($praktikum->kategori) }}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-info btn-sm">
+                                    <button class="btn btn-info btn-sm" onclick="document.location.href = '{{ route('admin.master-edit', 'praktikum') }}?id={{ $praktikum->id }}'">
                                         <ion-icon name="create"></ion-icon>
                                     </button>
                                     <form action="" class="d-inline" method="POST">

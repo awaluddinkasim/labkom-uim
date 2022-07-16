@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/master/{jenis}', [AdminController::class, 'masterDataStore'])->name('master-store');
     Route::delete('/master/{jenis}', [AdminController::class, 'masterDataDelete'])->name('master-delete');
 
+    Route::get('/master/{jenis}/edit', [AdminController::class, 'masterDataEdit'])->name('master-edit');
+
     Route::get('/akun/{jenis}', [AdminController::class, 'akun'])->name('akun');
     Route::delete('/akun/{jenis}', [AdminController::class, 'akunDelete'])->name('akun-delete');
     Route::post('/akun/dosen', [AdminController::class, 'akunDosenStore'])->name('akun-dosen-store');
