@@ -162,6 +162,7 @@ class AdminController extends Controller
                 $prak->nama = $request->nama;
                 $prak->semester = $request->semester;
                 $prak->id_prodi = $request->prodi;
+                $prak->kategori = $request->semester % 2 == 0 ? 'genap' : 'ganjil';
                 $prak->update();
 
                 return redirect()->route('admin.master', $jenis)->with('success', 'Praktikum berhasil diupdate');
