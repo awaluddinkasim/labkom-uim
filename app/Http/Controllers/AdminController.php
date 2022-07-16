@@ -138,6 +138,39 @@ class AdminController extends Controller
         }
     }
 
+    public function masterDataUpdate(Request $request, $jenis)
+    {
+        switch ($jenis) {
+            case 'fakultas':
+                $fak = Fakultas::find($request->id);
+                $fak->nama = $request->fakultas;
+                $fak->update();
+
+                return redirect()->route('admin.master', $jenis)->with('success', 'Fakultas berhasil diupdate');
+
+
+            case 'prodi':
+                $prodi = Prodi::find($request->id);
+                $prodi->id_fakultas = $request->fakultas;
+                $prodi->nama = $request->prodi;
+                $prodi->update();
+
+                return redirect()->route('admin.master', $jenis)->with('success', 'Program studi berhasil diupdate');
+
+            case 'praktikum':
+                $prak = Praktikum::find($request->id);
+                $prak->nama = $request->nama;
+                $prak->semester = $request->semester;
+                $prak->id_prodi = $request->prodi;
+                $prak->update();
+
+                return redirect()->route('admin.master', $jenis)->with('success', 'Praktikum berhasil diupdate');
+
+            default:
+                return redirect()->route('admin.dashboard');
+        }
+    }
+
     public function akun($jenis)
     {
         switch ($jenis) {

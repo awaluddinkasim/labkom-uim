@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
     Route::delete('/master/{jenis}', [AdminController::class, 'masterDataDelete'])->name('master-delete');
 
     Route::get('/master/{jenis}/edit', [AdminController::class, 'masterDataEdit'])->name('master-edit');
+    Route::put('/master/{jenis}/update', [AdminController::class, 'masterDataUpdate'])->name('master-update');
 
     Route::get('/akun/{jenis}', [AdminController::class, 'akun'])->name('akun');
     Route::delete('/akun/{jenis}', [AdminController::class, 'akunDelete'])->name('akun-delete');
