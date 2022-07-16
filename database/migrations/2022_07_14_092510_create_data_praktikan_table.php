@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_user');
             $table->foreignId('id_praktikum');
+            $table->string('nidn_dosen');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users')
