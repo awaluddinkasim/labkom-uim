@@ -11,6 +11,11 @@ class DataPengampu extends Model
 
     protected $table = 'data_pengampu';
 
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'id_dosen');
+    }
+
     public function praktikum()
     {
         return $this->belongsTo(Praktikum::class, 'id_praktikum');

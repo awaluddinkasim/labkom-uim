@@ -11,6 +11,8 @@ class Fakultas extends Model
 
     protected $table = "fakultas";
 
+    protected $with = ['prodi'];
+
     public function prodi()
     {
         return $this->hasMany(Prodi::class, 'id_fakultas')->orderBy('nama');
