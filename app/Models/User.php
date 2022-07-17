@@ -22,7 +22,7 @@ class User extends Authenticatable
         'no_hp',
         'password',
         'foto',
-        'id_jurusan',
+        'id_prodi',
         'active',
         'level'
     ];
@@ -36,4 +36,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'id_prodi');
+    }
 }
