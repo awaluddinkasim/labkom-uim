@@ -355,7 +355,7 @@ class AdminController extends Controller
             return view('admin.slip-praktikum-detail', $data);
         }
         $data = [
-            'daftarData' => DataPraktikan::get()->sortBy('praktikum.nama')
+            'daftarData' => DataPraktikan::distinct()->get(['id_praktikum', 'nidn_dosen'])->sortBy('praktikum.nama')
         ];
 
         return view('admin.slip-praktikum', $data);
