@@ -35,7 +35,7 @@
                                             <ion-icon name="open"></ion-icon>
                                         </button>
                                         @if ($user->active)
-                                            <form action="{{ route('admin.akun-delete', 'user') }}" class="d-inline"
+                                            <form action="{{ route('admin.akun-delete', 'mahasiswa') }}" class="d-inline"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
