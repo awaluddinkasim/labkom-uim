@@ -23,7 +23,7 @@
                                 <div class="form-group">
                                     <label class="mb-0" for="nim">Nomor Induk Mahasiswa</label>
                                     <input type="text" class="form-control" id="nim" name="nim"
-                                        value="{{ $mahasiswa->nim }}" autocomplete="off" required>
+                                        value="{{ $mahasiswa->nim }}" autocomplete="off" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label class="mb-0" for="nama">Nama</label>

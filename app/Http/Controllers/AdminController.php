@@ -286,7 +286,6 @@ class AdminController extends Controller
     public function akunMahasiswaUpdate(Request $request, $id)
     {
         $mhs = User::find($id);
-        $mhs->nim = $request->nim;
         $mhs->nama = $request->nama;
         $mhs->no_hp = $request->no_hp;
         $mhs->id_prodi = $request->prodi;
