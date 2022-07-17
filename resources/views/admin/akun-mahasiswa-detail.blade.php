@@ -10,7 +10,7 @@
                     <button class="btn btn-success" onclick="action('verifikasi')">Verifikasi</button>
                 </div>
             @else
-                <button class="btn btn-info">
+                <button class="btn btn-info" onclick="document.location.href = '{{ route('admin.mhs-edit', $mahasiswa->id) }}'">
                     <i class="fas fa-edit"></i>
                 </button>
             @endif

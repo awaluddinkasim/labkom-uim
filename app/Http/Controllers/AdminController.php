@@ -273,6 +273,32 @@ class AdminController extends Controller
         return view('admin.akun-mahasiswa-detail', $data);
     }
 
+    public function akunMahasiswaEdit($id)
+    {
+        $data = [
+            'daftarFakultas' => Fakultas::orderBy('nama')->get(),
+            'mahasiswa' => User::find($id)
+        ];
+
+        return view('admin.akun-mahasiswa-edit', $data);
+    }
+
+    public function akunMahasiswaUpdate(Request $request, $id)
+    {
+        $mhs = User::find($id);
+        $mhs->nim = $request->nim;
+        $mhs->nama = $request->nama;
+        $mhs->no_hp = $request->no_hp;
+        $mhs->id_prodi = $request->prodi;
+        $mhs->level = $request->level;
+        if ($request->password) {
+            $mhs->password = bcrypt($request->password);
+        }
+        $mhs->update();
+
+        return redirect()->route('admin.mhs-detail', $id);
+    }
+
     public function akunMahasiswaAction(Request $request, $action)
     {
         switch ($action) {
