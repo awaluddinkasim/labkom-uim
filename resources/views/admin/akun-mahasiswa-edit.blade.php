@@ -54,7 +54,7 @@
                                     <label class="mb-0" for="level">Role</label>
                                     <select class="custom-select mr-sm-2" id="level" name="level" required>
                                         <option selected hidden value="">Pilih</option>
-                                        <option value="asisten" {{ $mahasiswa->level == "asisten" ? 'selected' : '' }}>Asisten</option>
+                                        <option value="asisten" {{ $mahasiswa->level == "asisten" ? 'selected' : '' }}>Asisten Lab</option>
                                         <option value="mahasiswa" {{ $mahasiswa->level == "mahasiswa" ? 'selected' : '' }}>Mahasiswa</option>
                                     </select>
                                 </div>
