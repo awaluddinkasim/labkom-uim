@@ -272,6 +272,30 @@ class AdminController extends Controller
         return view('admin.akun-mahasiswa-detail', $data);
     }
 
+    public function akunMahasiswaAction(Request $request, $action)
+    {
+        switch ($action) {
+            case 'verifikasi':
+                $mhs = User::find($request->id);
+                $mhs->active = '1';
+                $mhs->update();
+
+                return redirect()->route('admin.akun', 'mahasiswa')->with('success', 'Mahasiswa berhasil diverifikasi');
+
+            case 'tolak':
+                $mhs = User::find($request->id);
+                if ($mhs->foto != 'default.png') {
+                    File::delete(public_path('f/avatar/'.$mhs->foto));
+                }
+                $mhs->delete();
+
+                return redirect()->route('admin.akun', 'mahasiswa')->with('success', 'Mahasiswa berhasil ditolak');
+
+            default:
+                return redirect()->route('admin.dashboard');
+        }
+    }
+
     public function slipPraktikum(Request $request)
     {
         if ($request->has('p')) {

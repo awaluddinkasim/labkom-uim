@@ -6,8 +6,8 @@
             <h1 class="mr-auto">{{ $mahasiswa->nama }}</h1>
             @if (!$mahasiswa->active)
                 <div class="d-none d-lg-block">
-                    <button class="btn btn-outline-danger">Tolak</button>
-                    <button class="btn btn-success">Verifikasi</button>
+                    <button class="btn btn-outline-danger" onclick="action('tolak')">Tolak</button>
+                    <button class="btn btn-success" onclick="action('verifikasi')">Verifikasi</button>
                 </div>
             @else
                 <button class="btn btn-info">
@@ -69,4 +69,32 @@
             </div>
         </div>
     </section>
+
+    <form action="{{ route('admin.mhs-action', 'verifikasi') }}" method="POST" id="formVerifikasi">
+        @csrf
+        <input type="hidden" name="id" value="{{ $mahasiswa->id }}">
+    </form>
+    <form action="{{ route('admin.mhs-action', 'tolak') }}" method="POST" id="formTolak">
+        @csrf
+        <input type="hidden" name="id" value="{{ $mahasiswa->id }}">
+    </form>
 @endsection
+
+@push('scripts')
+    <script>
+        function action(jenis) {
+            switch (jenis) {
+                case "verifikasi":
+                    $('#formVerifikasi').submit();
+                    break;
+
+                case "tolak":
+                    $('#formTolak').submit();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    </script>
+@endpush

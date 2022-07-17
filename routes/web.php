@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
     Route::delete('/akun/dosen/{id}', [AdminController::class, 'akunDosenPraktikumDelete'])->name('dosen-praktikum-delete');
 
     Route::get('/akun/mahasiswa/{id}', [AdminController::class, 'akunMahasiswaDetail'])->name('mhs-detail');
+    Route::post('/akun/mahasiswa/{action}', [AdminController::class, 'akunMahasiswaAction'])->name('mhs-action');
 
     Route::get('/slip', [AdminController::class, 'slipPraktikum'])->name('slip');
 
