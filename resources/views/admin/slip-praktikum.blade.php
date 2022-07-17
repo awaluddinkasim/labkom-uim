@@ -15,17 +15,19 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Praktikum</th>
-                                <th>Jumlah Mahasiswa</th>
+                                <th>Dosen</th>
                                 <th>Jumlah Slip</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($daftarPraktikum as $praktikum)
-                                <tr onclick="document.location.href = '{{ route('admin.slip') }}?p={{ $praktikum->id }}'">
+                            @forelse ($daftarData as $data)
+                                <tr onclick="document.location.href = '{{ route('admin.slip') }}?p={{ $data->praktikum->id }}'">
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $praktikum->nama }}</td>
-                                    <td>{{ $praktikum->praktikan->count() }}</td>
-                                    <td>{{ $praktikum->slip->count() }}</td>
+                                    <td>{{ $data->praktikum->nama }}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="NIDN: {{ $data->nidn_dosen }}">
+                                        {!! $data->pengampu ? $data->pengampu->nama : '-' !!}
+                                    </td>
+                                    <td>{{ $data->praktikum->slip->count() }}</td>
                                 </tr>
                             @empty
                                 <tr>

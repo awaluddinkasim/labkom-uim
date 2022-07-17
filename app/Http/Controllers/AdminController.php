@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPengampu;
+use App\Models\DataPraktikan;
 use App\Models\Dosen;
 use App\Models\Fakultas;
 use App\Models\Praktikum;
@@ -273,7 +274,7 @@ class AdminController extends Controller
             return view('admin.slip-praktikum-detail', $data);
         }
         $data = [
-            'daftarPraktikum' => Praktikum::orderBy('nama')->get()
+            'daftarData' => DataPraktikan::get()->sortBy('praktikum.nama')
         ];
 
         return view('admin.slip-praktikum', $data);

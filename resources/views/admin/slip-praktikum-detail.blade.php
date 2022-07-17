@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $slip->nim }}</td>
-                            <td>{{ $slip->nama }}</td>
+                            <td>{{ $slip->nama_mhs }}</td>
                             <td>Rp. {{ number_format($slip->nominal) }}</td>
                             <td>{{ Carbon\Carbon::parse($slip->tgl_slip)->isoFormat('D MMMM YYYY') }}</td>
                             <td class="text-center">
