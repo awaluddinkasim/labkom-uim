@@ -31,7 +31,7 @@
                                         ? '<span class="text-success">Terverifikasi</span>'
                                         : '<span class="text-danger">Pending</span>' !!}</td>
                                     <td class="text-center">
-                                        <button class="btn btn-primary btn-sm">
+                                        <button class="btn btn-primary btn-sm" onclick="document.location.href = '{{ route('admin.mhs-detail', $user->id) }}'">
                                             <ion-icon name="open"></ion-icon>
                                         </button>
                                         @if ($user->active)

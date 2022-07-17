@@ -263,6 +263,15 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Praktikum berhasil dihapus');
     }
 
+    public function akunMahasiswaDetail($id)
+    {
+        $data = [
+            'mahasiswa' => User::find($id)
+        ];
+
+        return view('admin.akun-mahasiswa-detail', $data);
+    }
+
     public function slipPraktikum(Request $request)
     {
         if ($request->has('p')) {
