@@ -10,6 +10,15 @@
             </button>
         </div>
 
+        @if (Session::has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ Session::get('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         <div class="section-body">
             <form action="" method="POST" id="formPengaturan">
                 @csrf
@@ -25,18 +34,23 @@
                                     <div class="col-sm-6">
                                         <select class="custom-select mr-sm-2" id="semester" name="semester" required>
                                             <option selected hidden value="">Pilih</option>
-                                            <option value="ganjil" {{ $semester->value == "ganjil" ? 'selected' : '' }}>Ganjil</option>
-                                            <option value="genap" {{ $semester->value == "genap" ? 'selected' : '' }}>Genap</option>
+                                            <option value="ganjil" {{ $semester->value == 'ganjil' ? 'selected' : '' }}>
+                                                Ganjil</option>
+                                            <option value="genap" {{ $semester->value == 'genap' ? 'selected' : '' }}>
+                                                Genap</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="upload" class="col-sm-6 col-form-label align-self-center">Upload Slip</label>
+                                    <label for="upload" class="col-sm-6 col-form-label align-self-center">Upload
+                                        Slip</label>
                                     <div class="col-sm-6">
                                         <select class="custom-select mr-sm-2" id="upload" name="upload" required>
                                             <option selected hidden value="">Pilih</option>
-                                            <option value="buka" {{ $upload->value == "buka" ? 'selected' : '' }}>Terbuka</option>
-                                            <option value="tutup" {{ $upload->value == "tutup" ? 'selected' : '' }}>Tertutup</option>
+                                            <option value="buka" {{ $upload->value == 'buka' ? 'selected' : '' }}>
+                                                Terbuka</option>
+                                            <option value="tutup" {{ $upload->value == 'tutup' ? 'selected' : '' }}>
+                                                Tertutup</option>
                                         </select>
                                     </div>
                                 </div>
@@ -77,7 +91,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">+62</span>
                                         </div>
-                                        <input type="text" class="form-control" id="kepala_lab" name="kepala_lab" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="kepala_lab" name="kepala_lab"
+                                            autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -86,7 +101,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">+62</span>
                                         </div>
-                                        <input type="text" class="form-control" id="asisten1" name="asisten1" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="asisten1" name="asisten1"
+                                            autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -95,7 +111,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">+62</span>
                                         </div>
-                                        <input type="text" class="form-control" id="asisten2" name="asisten2" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="asisten2" name="asisten2"
+                                            autocomplete="off" required>
                                     </div>
                                 </div>
                             </div>

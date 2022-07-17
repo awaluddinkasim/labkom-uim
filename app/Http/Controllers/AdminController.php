@@ -386,7 +386,7 @@ class AdminController extends Controller
 
     public function pengaturanSave(Request $request)
     {
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Pengaturan berhasil disimpan');
     }
 
     public function profil()
