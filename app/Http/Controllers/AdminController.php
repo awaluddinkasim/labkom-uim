@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\DataPengampu;
 use App\Models\DataPraktikan;
 use App\Models\Dosen;
@@ -311,5 +312,23 @@ class AdminController extends Controller
         ];
 
         return view('admin.slip-praktikum', $data);
+    }
+
+    public function profil()
+    {
+        return view('admin.profil');
+    }
+
+    public function profilUpdate(Request $request)
+    {
+        $admin = Admin::find(auth()->user()->id);
+        $admin->email = $request->email;
+        $admin->nama = $request->nama;
+        if ($request->password) {
+            $admin->password = bcrypt($request->password);
+        }
+        $admin->update();
+
+        return redirect()->back()->with('Berhasil update profil');
     }
 }

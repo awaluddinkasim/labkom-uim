@@ -49,5 +49,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
 
     Route::get('/slip', [AdminController::class, 'slipPraktikum'])->name('slip');
 
+    Route::get('/profil', [AdminController::class, 'profil'])->name('profil');
+    Route::put('/profil', [AdminController::class, 'profilUpdate'])->name('profil-update');
+
     Route::get('/logout', [AuthController::class, 'logoutAdmin'])->name('logout');
 });

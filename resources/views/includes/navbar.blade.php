@@ -11,9 +11,9 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Selamat datang</div>
-                <a href="features-profile.html" class="dropdown-item has-icon">
+                <a href="{{ route('admin.profil') }}" class="dropdown-item has-icon">
                     <ion-icon name="person-outline"></ion-icon>
-                    Profile
+                    Edit Profile
                 </a>
                 <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger">
                     <ion-icon name="exit-outline"></ion-icon>
