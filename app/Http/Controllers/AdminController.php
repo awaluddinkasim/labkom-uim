@@ -255,6 +255,10 @@ class AdminController extends Controller
     public function akunDosenUpdate(Request $request, $id)
     {
         $dosen = Dosen::find($id);
+        DataPraktikan::where('nidn_dosen', $dosen->nidn)->update([
+            'nidn_dosen' => $request->nidn,
+            'updated_at' => now()
+        ]);
         $dosen->nidn = $request->nidn;
         $dosen->nama = $request->nama;
         if ($dosen->password) {
