@@ -185,7 +185,7 @@ class AdminController extends Controller
 
             case 'mahasiswa':
                 $data = [
-                    'daftarUser' => User::orderBy('nim')->orderBy('active')->get()
+                    'daftarUser' => User::orderBy('active')->orderBy('nim')->get()
                 ];
 
                 return view('admin.akun-mahasiswa', $data);
