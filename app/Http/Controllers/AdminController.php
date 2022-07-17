@@ -308,6 +308,10 @@ class AdminController extends Controller
     public function akunMahasiswaUpdate(Request $request, $id)
     {
         $mhs = User::find($id);
+        Slip::where('nim', $mhs->nim)->update([
+            'nama' => $request->nama,
+            'updated_at' => now()
+        ]);
         $mhs->nama = $request->nama;
         $mhs->no_hp = $request->no_hp;
         $mhs->id_prodi = $request->prodi;
