@@ -243,6 +243,28 @@ class AdminController extends Controller
         return view('admin.akun-dosen-detail', $data);
     }
 
+    public function akunDosenEdit($id)
+    {
+        $data = [
+            'dosen' => Dosen::find($id),
+        ];
+
+        return view('admin.akun-dosen-edit', $data);
+    }
+
+    public function akunDosenUpdate(Request $request, $id)
+    {
+        $dosen = Dosen::find($id);
+        $dosen->nidn = $request->nidn;
+        $dosen->nama = $request->nama;
+        if ($dosen->password) {
+            $dosen->password = bcrypt($request->password);
+        }
+        $dosen->update();
+
+        return redirect()->route('admin.dosen-detail', $id);
+    }
+
     public function akunDosenPraktikum(Request $request, $id)
     {
         $check = DataPengampu::where('id_dosen', $id)->where('id_praktikum', $request->praktikum)->first();

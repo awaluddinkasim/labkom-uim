@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/akun/dosen', [AdminController::class, 'akunDosenStore'])->name('akun-dosen-store');
 
     Route::get('/akun/dosen/{id}', [AdminController::class, 'akunDosenDetail'])->name('dosen-detail');
+    Route::get('/akun/dosen/{id}/edit', [AdminController::class, 'akunDosenEdit'])->name('dosen-edit');
+    Route::put('/akun/dosen/{id}/edit', [AdminController::class, 'akunDosenUpdate'])->name('dosen-update');
     Route::post('/akun/dosen/{id}', [AdminController::class, 'akunDosenPraktikum'])->name('dosen-praktikum');
     Route::delete('/akun/dosen/{id}', [AdminController::class, 'akunDosenPraktikumDelete'])->name('dosen-praktikum-delete');
 

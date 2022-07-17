@@ -4,7 +4,7 @@
     <section class="section">
         <div class="section-header">
             <h1 class="mr-auto">{{ $dosen->nama }}</h1>
-            <button class="btn btn-info">
+            <button class="btn btn-info" onclick="document.location.href = '{{ route('admin.dosen-edit', $dosen->id) }}'">
                 <i class="fas fa-edit"></i>
             </button>
         </div>
