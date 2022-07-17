@@ -9,6 +9,7 @@ use App\Models\Dosen;
 use App\Models\Fakultas;
 use App\Models\Praktikum;
 use App\Models\Prodi;
+use App\Models\Setting;
 use App\Models\Slip;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -367,6 +368,25 @@ class AdminController extends Controller
         ];
 
         return view('admin.slip-praktikum', $data);
+    }
+
+    public function pengaturan()
+    {
+        $data = [
+            'semester' => Setting::where('name', 'semester')->first(),
+            'upload' => Setting::where('name', 'upload')->first(),
+
+            'kepala_lab' => Setting::where('name', 'kepala_lab')->first(),
+            'asisten1' => Setting::where('name', 'asisten1')->first(),
+            'asisten2' => Setting::where('name', 'asisten2')->first(),
+        ];
+
+        return view('admin.pengaturan', $data);
+    }
+
+    public function pengaturanSave(Request $request)
+    {
+        return redirect()->back();
     }
 
     public function profil()

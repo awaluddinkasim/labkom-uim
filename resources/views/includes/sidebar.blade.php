@@ -41,8 +41,8 @@
                     <span>Slip Pembayaran</span>
                 </a>
             </li>
-            <li>
-                <a class="nav-link" href="#">
+            <li class="{{ Request::segment(2) == "pengaturan" ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.pengaturan') }}">
                     <ion-icon name="settings"></ion-icon>
                     <span>Pengaturan</span>
                 </a>

@@ -53,6 +53,9 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
 
     Route::get('/slip', [AdminController::class, 'slipPraktikum'])->name('slip');
 
+    Route::get('/pengaturan', [AdminController::class, 'pengaturan'])->name('pengaturan');
+    Route::post('/pengaturan', [AdminController::class, 'pengaturanSave'])->name('pengaturan-save');
+
     Route::get('/profil', [AdminController::class, 'profil'])->name('profil');
     Route::put('/profil', [AdminController::class, 'profilUpdate'])->name('profil-update');
 
