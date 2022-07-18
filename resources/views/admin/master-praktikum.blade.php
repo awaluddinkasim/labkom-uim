@@ -34,8 +34,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Praktikum</th>
+                                <th>Program Studi</th>
                                 <th>Semester</th>
-                                <th>Kategori</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -44,8 +44,8 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $praktikum->nama }}</td>
+                                <td>{{ $praktikum->prodi->nama }}</td>
                                 <td>{{ $praktikum->semester }}</td>
-                                <td>{{ ucfirst($praktikum->kategori) }}</td>
                                 <td class="text-center">
                                     <button class="btn btn-info btn-sm" onclick="document.location.href = '{{ route('admin.master-edit', 'praktikum') }}?id={{ $praktikum->id }}'">
                                         <ion-icon name="create"></ion-icon>

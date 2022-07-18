@@ -21,6 +21,11 @@ class Praktikum extends Model
         return $this->hasMany(DataPengampu::class, 'id_praktikum');
     }
 
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'id_prodi');
+    }
+
     public function slip()
     {
         return $this->hasMany(Slip::class, 'id_praktikum');
