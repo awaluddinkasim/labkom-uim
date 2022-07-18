@@ -1,26 +1,26 @@
 @extends('layout')
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h1 class="mr-auto">Pengaturan</h1>
-            <button class="btn btn-success" onclick="save()">
-                <i class="fas fa-save mr-2"></i>
-                <span>Simpan</span>
-            </button>
-        </div>
+    <form action="" method="POST" id="formPengaturan">
+        <section class="section">
+            <div class="section-header">
+                <h1 class="mr-auto">Pengaturan</h1>
+                <button class="btn btn-success" onclick="save()">
+                    <i class="fas fa-save mr-2"></i>
+                    <span>Simpan</span>
+                </button>
+            </div>
 
-        @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ Session::get('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+            @if (Session::has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ Session::get('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
 
-        <div class="section-body">
-            <form action="" method="POST" id="formPengaturan">
+            <div class="section-body">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6">
@@ -119,15 +119,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </section>
+            </div>
+        </section>
+    </form>
 @endsection
-
-@push('scripts')
-    <script>
-        function save() {
-            $('#formPengaturan').submit();
-        }
-    </script>
-@endpush
