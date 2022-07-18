@@ -415,14 +415,21 @@ class AdminController extends Controller
 
     public function profilUpdate(Request $request)
     {
-        $admin = Admin::find(auth()->user()->id);
-        $admin->email = $request->email;
-        $admin->nama = $request->nama;
-        if ($request->password) {
-            $admin->password = bcrypt($request->password);
-        }
-        $admin->update();
+        try {
+            $admin = Admin::find(auth()->user()->id);
+            $admin->email = $request->email;
+            $admin->nama = $request->nama;
+            if ($request->password) {
+                $admin->password = bcrypt($request->password);
+            }
+            $admin->update();
 
-        return redirect()->back()->with('success', 'Update profil berhasil');
+            return redirect()->back()->with('success', 'Update profil berhasil');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return redirect()->back()->with('failed', 'Email telah terdaftar pada akun lain');
+            }
+        }
     }
 }

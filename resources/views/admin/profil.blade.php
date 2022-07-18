@@ -58,4 +58,13 @@
         })
     </script>
     @endif
+    @if (Session::has('failed'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Berhasil!',
+            text: '{{ Session::get('failed') }}'
+        })
+    </script>
+    @endif
 @endpush
