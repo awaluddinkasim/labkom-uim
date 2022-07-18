@@ -70,7 +70,7 @@ class AdminController extends Controller
                 $prodi->nama = $request->prodi;
                 $prodi->save();
 
-                return redirect()->back()->with('success', 'Program Studi berhasil ditambah');
+                return redirect()->back()->with('success', 'Program studi berhasil ditambah');
 
             case 'praktikum':
                 $prak = new Praktikum();
@@ -275,7 +275,7 @@ class AdminController extends Controller
         }
         $dosen->update();
 
-        return redirect()->route('admin.dosen-detail', $id);
+        return redirect()->route('admin.dosen-detail', $id)->with('success', 'Akun berhasil diupdate');
     }
 
     public function akunDosenPraktikum(Request $request, $id)
@@ -334,7 +334,7 @@ class AdminController extends Controller
         }
         $mhs->update();
 
-        return redirect()->route('admin.mhs-detail', $id);
+        return redirect()->route('admin.mhs-detail', $id)->with('success', 'Akun berhasil diupdate');
     }
 
     public function akunMahasiswaAction(Request $request, $action)
