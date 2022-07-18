@@ -28,6 +28,9 @@
 
         <div class="section-body">
             <div class="row">
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="{{ asset('assets/img/master-data.svg') }}" class="w-100">
+                </div>
                 <div class="col-lg-7">
                     <div class="card">
                         <div class="card-body">
@@ -71,9 +74,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <img src="{{ asset('assets/img/master-data.svg') }}" class="w-100">
                 </div>
             </div>
         </div>
