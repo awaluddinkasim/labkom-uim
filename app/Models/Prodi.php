@@ -20,4 +20,9 @@ class Prodi extends Model
     {
         return $this->hasMany(User::class, 'id_prodi');
     }
+
+    public function praktikum()
+    {
+        return $this->hasMany(Praktikum::class, 'id_prodi');
+    }
 }
