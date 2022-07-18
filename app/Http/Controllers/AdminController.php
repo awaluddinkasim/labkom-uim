@@ -264,18 +264,29 @@ class AdminController extends Controller
     public function akunDosenUpdate(Request $request, $id)
     {
         $dosen = Dosen::find($id);
-        DataPraktikan::where('nidn_dosen', $dosen->nidn)->update([
-            'nidn_dosen' => $request->nidn,
-            'updated_at' => now()
-        ]);
-        $dosen->nidn = $request->nidn;
-        $dosen->nama = $request->nama;
-        if ($dosen->password) {
-            $dosen->password = bcrypt($request->password);
-        }
-        $dosen->update();
+        try {
+            $nidn = $dosen->nidn;
 
-        return redirect()->route('admin.dosen-detail', $id)->with('success', 'Akun berhasil diupdate');
+            $dosen->nidn = $request->nidn;
+            $dosen->nama = $request->nama;
+            if ($dosen->password) {
+                $dosen->password = bcrypt($request->password);
+            }
+            $dosen->update();
+
+            DataPraktikan::where('nidn_dosen', $dosen->nidn)->update([
+                'nidn_dosen' => $request->nidn,
+                'updated_at' => now()
+            ]);
+
+            return redirect()->route('admin.dosen-detail', $id)->with('success', 'Akun berhasil diupdate');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return redirect()->route('admin.dosen-detail', $id)->with('failed', 'Gagal, NIDN tersebut sudah terdaftar pada akun lain');
+            }
+        }
+
     }
 
     public function akunDosenPraktikum(Request $request, $id)
