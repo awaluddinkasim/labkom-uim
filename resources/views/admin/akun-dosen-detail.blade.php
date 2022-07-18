@@ -56,16 +56,18 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Praktikum</th>
-                                    <th>Jumlah Mahasiswa</th>
+                                    <th>Program Studi</th>
+                                    <th>Semester</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($dosen->dataPraktikum as $data)
+                                @forelse ($dosen->dataPraktikum->sortBy(['praktikum.semester', 'praktikum.prodi.nama']) as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->praktikum->nama }}</td>
-                                        <td>{{ $data->praktikum->praktikan->count() }}</td>
+                                        <td>{{ $data->praktikum->prodi->nama }}</td>
+                                        <td>{{ $data->praktikum->semester }}</td>
                                         <td class="text-center">
                                             <form action="" class="d-inline" method="POST">
                                                 @csrf
