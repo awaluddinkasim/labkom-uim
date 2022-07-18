@@ -20,7 +20,13 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $data = [
+            'slip' => Slip::all()->count(),
+            'mahasiswaAktif' => User::where('active', '1')->get()->count(),
+            'mahasiswaPending' => User::where('active', '0')->get()->count(),
+        ];
+
+        return view('admin.dashboard', $data);
     }
 
     public function masterData($jenis)

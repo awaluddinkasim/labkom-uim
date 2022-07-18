@@ -18,7 +18,7 @@
                                 <h4>Slip Pembayaran</h4>
                             </div>
                             <div class="card-body">
-                                10
+                                {{ $slip }}
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <h4>Mahasiswa Aktif</h4>
                             </div>
                             <div class="card-body">
-                                10
+                                {{ $mahasiswaAktif }}
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                 <h4>Mahasiswa Pending</h4>
                             </div>
                             <div class="card-body">
-                                10
+                                {{ $mahasiswaPending }}
                             </div>
                         </div>
                     </div>
