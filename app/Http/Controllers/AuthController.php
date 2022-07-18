@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -35,5 +37,41 @@ class AuthController extends Controller
     {
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
+    }
+
+    public function loginAPI(Request $request)
+    {
+        $mahasiswa = User::where('nim', $request->nim)->first();
+
+        if ($mahasiswa->active) {
+            if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
+                $token = $mahasiswa->createToken('auth-user')->plainTextToken;
+
+                return response()->json([
+                    'message' => 'berhasil',
+                    'token' => $token,
+                    'user' => $mahasiswa
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'message' => 'Akun belum aktif',
+                'data' => $request->all()
+            ], 401);
+        }
+
+        return response()->json([
+            'message' => 'Username atau Password salah',
+            'data' => $request->all()
+        ], 401);
+    }
+
+    public function logoutAPI(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'berhasil'
+        ], 200);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/jurusan', [ApiController::class, 'daftarJurusan']);
+
+Route::post('/login', [AuthController::class, 'loginAPI']);
+Route::get('/logout', [AuthController::class, 'logoutAPI']);
