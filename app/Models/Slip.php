@@ -15,4 +15,9 @@ class Slip extends Model
     {
         return $this->belongsTo(Praktikum::class, 'id_praktikum');
     }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(User::class, 'nim', 'nim');
+    }
 }

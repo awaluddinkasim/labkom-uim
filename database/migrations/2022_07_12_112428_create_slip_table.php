@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_praktikum');
             $table->string('nim');
-            $table->string('nama_mhs');
             $table->string('slip');
             $table->date('tgl_slip');
             $table->integer('nominal');
