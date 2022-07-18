@@ -12,6 +12,7 @@ use App\Models\Prodi;
 use App\Models\Setting;
 use App\Models\Slip;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -225,13 +226,20 @@ class AdminController extends Controller
 
     public function akunDosenStore(Request $request)
     {
-        $dosen = new Dosen();
-        $dosen->nidn = $request->nidn;
-        $dosen->nama = $request->nama;
-        $dosen->password = bcrypt($request->password);
-        $dosen->save();
+        try {
+            $dosen = new Dosen();
+            $dosen->nidn = $request->nidn;
+            $dosen->nama = $request->nama;
+            $dosen->password = bcrypt($request->password);
+            $dosen->save();
 
-        return redirect()->back()->with('success', 'Berhasil menambah akun');
+            return redirect()->back()->with('success', 'Berhasil menambah akun');
+        } catch (QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return redirect()->back()->with('failed', 'Akun dengan NIDN tersebut sudah terdaftar sebelumnya');
+            }
+        }
     }
 
     public function akunDosenDetail($id)
