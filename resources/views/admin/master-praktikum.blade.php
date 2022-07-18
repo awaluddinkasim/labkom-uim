@@ -33,13 +33,13 @@
                                     <button class="btn btn-info btn-sm" onclick="document.location.href = '{{ route('admin.master-edit', 'praktikum') }}?id={{ $praktikum->id }}'">
                                         <ion-icon name="create"></ion-icon>
                                     </button>
-                                    <form action="" class="d-inline" method="POST">
+                                    <button class="btn btn-danger btn-sm" onclick="deleteData()">
+                                        <ion-icon name="trash"></ion-icon>
+                                    </button>
+                                    <form action="{{ route('admin.master-delete', 'praktikum') }}" class="d-inline" method="POST" id="formDelete">
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" name="id" value="{{ $praktikum->id }}">
-                                        <button class="btn btn-danger btn-sm" type="submit">
-                                            <ion-icon name="trash"></ion-icon>
-                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -127,5 +127,18 @@
                 sort: false
             });
         });
+
+        function deleteData() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data slip pembayaran yang terdaftar pada praktikum ini akan ikut terhapus.",
+                icon: 'warning',
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#formDelete').submit();
+                }
+            });
+        }
     </script>
 @endpush

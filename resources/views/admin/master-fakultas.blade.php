@@ -32,13 +32,13 @@
                                                     <button class="btn btn-info btn-sm" onclick="document.location.href = '{{ route('admin.master-edit', 'fakultas') }}?id={{ $fakultas->id }}'">
                                                         <ion-icon name="create"></ion-icon>
                                                     </button>
-                                                    <form action="" class="d-inline" method="POST">
+                                                    <button class="btn btn-danger btn-sm" onclick="deleteData()">
+                                                        <ion-icon name="trash"></ion-icon>
+                                                    </button>
+                                                    <form action="{{ route('admin.master-delete', 'fakultas') }}" class="d-inline" method="POST" id="formDelete">
                                                         @csrf
                                                         @method('DELETE')
                                                         <input type="hidden" name="id" value="{{ $fakultas->id }}">
-                                                        <button class="btn btn-danger btn-sm" type="submit">
-                                                            <ion-icon name="trash"></ion-icon>
-                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -90,4 +90,21 @@
             </div>
         </div>
     </div>
+@endpush
+
+@push('scripts')
+    <script>
+        function deleteData() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Semua data yang terkait dengan fakultas ini akan terhapus.",
+                icon: 'warning',
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#formDelete').submit();
+                }
+            });
+        }
+    </script>
 @endpush

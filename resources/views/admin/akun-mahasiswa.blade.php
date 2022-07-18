@@ -34,15 +34,15 @@
                                         <button class="btn btn-primary btn-sm" onclick="document.location.href = '{{ route('admin.mhs-detail', $user->id) }}'">
                                             <ion-icon name="open"></ion-icon>
                                         </button>
+                                        <button class="btn btn-danger btn-sm" onclick="deleteData()">
+                                            <ion-icon name="trash"></ion-icon>
+                                        </button>
                                         @if ($user->active)
                                             <form action="{{ route('admin.akun-delete', 'mahasiswa') }}" class="d-inline"
-                                                method="POST">
+                                                method="POST" id="formDelete">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="id" value="{{ $user->id }}">
-                                                <button class="btn btn-danger btn-sm" type="submit">
-                                                    <ion-icon name="trash"></ion-icon>
-                                                </button>
                                             </form>
                                         @endif
                                     </td>
@@ -70,5 +70,18 @@
                 sort: false
             });
         });
+
+        function deleteData() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Akun ini akan terhapus dari database.",
+                icon: 'warning',
+                showCancelButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#formDelete').submit();
+                }
+            });
+        }
     </script>
 @endpush
