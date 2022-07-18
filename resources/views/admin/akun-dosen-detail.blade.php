@@ -98,7 +98,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formModalLabel">Tambah fakultas</h5>
+                    <h5 class="modal-title" id="formModalLabel">Tambah praktikum</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -110,8 +110,14 @@
                             <label for="praktikum">Praktikum</label>
                             <select class="select" name="praktikum" id="praktikum" required>
                                 <option value="" selected>Pilih Praktikum</option>
-                                @foreach ($daftarPraktikum as $praktikum)
-                                    <option value="{{ $praktikum->id }}">{{ $praktikum->nama }}</option>
+                                @foreach ($daftarProdi as $prodi)
+                                    @if ($prodi->praktikum->count())
+                                        <optgroup label="{{ $prodi->nama }}">
+                                            @foreach ($prodi->praktikum->sortBy('semester') as $praktikum)
+                                                <option value="{{ $praktikum->id }}">{{ $praktikum->nama }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
