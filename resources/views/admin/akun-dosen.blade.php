@@ -82,7 +82,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">Nomor Induk Dosen Nasional</label>
                             <input type="text" class="form-control" id="nidn" name="nidn" autocomplete="off"
                                 required>
                         </div>
