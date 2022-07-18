@@ -44,7 +44,7 @@ class AdminController extends Controller
             case 'praktikum':
                 $data = [
                     'daftarFakultas' => Fakultas::orderBy('nama')->get(),
-                    'daftarPraktikum' => Praktikum::orderBy('semester')->get()->sortBy(['semester', 'prodi.nama'])
+                    'daftarPraktikum' => Praktikum::all()->sortBy(['semester', 'prodi.nama'])
                 ];
 
                 return view('admin.master-praktikum', $data);
