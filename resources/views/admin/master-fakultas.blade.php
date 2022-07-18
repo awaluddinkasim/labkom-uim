@@ -41,10 +41,10 @@
                                                     <button class="btn btn-info btn-sm" onclick="document.location.href = '{{ route('admin.master-edit', 'fakultas') }}?id={{ $fakultas->id }}'">
                                                         <ion-icon name="create"></ion-icon>
                                                     </button>
-                                                    <button class="btn btn-danger btn-sm" onclick="deleteData()">
+                                                    <button class="btn btn-danger btn-sm" onclick="deleteData({{ $fakultas->id }})">
                                                         <ion-icon name="trash"></ion-icon>
                                                     </button>
-                                                    <form action="{{ route('admin.master-delete', 'fakultas') }}" class="d-inline" method="POST" id="formDelete">
+                                                    <form action="{{ route('admin.master-delete', 'fakultas') }}" class="d-inline" method="POST" id="formDelete{{ $fakultas->id }}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <input type="hidden" name="id" value="{{ $fakultas->id }}">
@@ -103,7 +103,7 @@
 
 @push('scripts')
     <script>
-        function deleteData() {
+        function deleteData(id) {
             Swal.fire({
                 title: 'Apakah Anda yakin?',
                 text: "Semua data yang terkait dengan fakultas ini akan terhapus.",
@@ -111,7 +111,7 @@
                 showCancelButton: true,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $('#formDelete').submit();
+                    $(`#formDelete${id}`).submit();
                 }
             });
         }
