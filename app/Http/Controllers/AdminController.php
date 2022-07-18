@@ -36,7 +36,7 @@ class AdminController extends Controller
             case 'prodi':
                 $data = [
                     'daftarFakultas' => Fakultas::orderBy('nama')->get(),
-                    'daftarJurusan' => Prodi::orderBy('id_fakultas')->orderBy('nama')->get()
+                    'daftarJurusan' => Prodi::all()->sortBy(['fakultas.nama', 'nama'])
                 ];
 
                 return view('admin.master-prodi', $data);
@@ -258,7 +258,7 @@ class AdminController extends Controller
     {
         $data = [
             'dosen' => Dosen::find($id),
-            'daftarPraktikum' => Praktikum::orderBy('nama')->get()
+            'daftarProdi' => Prodi::all()->sortBy(['fakultas.nama', 'nama'])
         ];
 
         return view('admin.akun-dosen-detail', $data);
