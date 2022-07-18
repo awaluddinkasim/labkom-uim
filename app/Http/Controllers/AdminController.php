@@ -58,6 +58,10 @@ class AdminController extends Controller
     {
         switch ($jenis) {
             case 'fakultas':
+                $check = Fakultas::where('nama', $request->fakultas)->first();
+                if ($check) {
+                    return redirect()->back()->with('failed', 'Fakultas yang Anda input sudah ada');
+                }
                 $fak = new Fakultas();
                 $fak->nama = $request->fakultas;
                 $fak->save();
@@ -65,6 +69,10 @@ class AdminController extends Controller
                 return redirect()->back()->with('success', 'Fakultas berhasil ditambah');
 
             case 'prodi':
+                $check = Prodi::where('id_fakultas', $request->fakultas)->where('nama', $request->prodi)->first();
+                if ($check) {
+                    return redirect()->back()->with('failed', 'Program studi yang Anda input sudah ada');
+                }
                 $prodi = new Prodi();
                 $prodi->id_fakultas = $request->fakultas;
                 $prodi->nama = $request->prodi;
@@ -73,6 +81,10 @@ class AdminController extends Controller
                 return redirect()->back()->with('success', 'Program studi berhasil ditambah');
 
             case 'praktikum':
+                $check = Praktikum::where('id_prodi', $request->prodi)->where('nama', $request->nama)->first();
+                if ($check) {
+                    return redirect()->back()->with('failed', 'Praktikum yang Anda input sudah ada');
+                }
                 $prak = new Praktikum();
                 $prak->id_prodi = $request->prodi;
                 $prak->nama = $request->nama;
