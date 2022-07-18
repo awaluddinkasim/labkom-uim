@@ -47,3 +47,15 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    @if (Session::has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ Session::get('success') }}'
+        })
+    </script>
+    @endif
+@endpush

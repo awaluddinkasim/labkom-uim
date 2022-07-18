@@ -423,6 +423,6 @@ class AdminController extends Controller
         }
         $admin->update();
 
-        return redirect()->back()->with('Berhasil update profil');
+        return redirect()->back()->with('success', 'Update profil berhasil');
     }
 }
