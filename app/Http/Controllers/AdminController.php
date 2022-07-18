@@ -311,7 +311,7 @@ class AdminController extends Controller
     {
         $check = DataPengampu::where('id_dosen', $id)->where('id_praktikum', $request->praktikum)->first();
         if ($check) {
-            return redirect()->back()->with('failed', 'Gagal, praktikum sudah terdaftar sebelumnya');
+            return redirect()->back()->with('failed', 'Praktikum yang Anda pilih sudah terdaftar pada akun ini');
         }
         $data = new DataPengampu();
         $data->id_dosen = $id;
