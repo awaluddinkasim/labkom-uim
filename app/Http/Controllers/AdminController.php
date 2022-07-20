@@ -374,7 +374,10 @@ class AdminController extends Controller
                 $mhs = User::find($request->id);
                 $mhs->active = '1';
 
-                Rejected::where('nim', $mhs->nim)->first()->delete();
+                $rejected = Rejected::where('nim', $mhs->nim)->first();
+                if ($rejected) {
+                    $rejected->delete();
+                }
 
                 $mhs->update();
 
