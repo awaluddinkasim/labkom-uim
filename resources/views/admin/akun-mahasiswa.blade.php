@@ -43,10 +43,10 @@
                                         <button class="btn btn-primary btn-sm" onclick="document.location.href = '{{ route('admin.mhs-detail', $user->id) }}'">
                                             <ion-icon name="open"></ion-icon>
                                         </button>
-                                        <button class="btn btn-danger btn-sm" onclick="deleteData({{ $user->id }})">
-                                            <ion-icon name="trash"></ion-icon>
-                                        </button>
                                         @if ($user->active)
+                                            <button class="btn btn-danger btn-sm" onclick="deleteData({{ $user->id }})">
+                                                <ion-icon name="trash"></ion-icon>
+                                            </button>
                                             <form action="{{ route('admin.akun-delete', 'mahasiswa') }}" class="d-inline"
                                                 method="POST" id="formDelete{{ $user->id }}">
                                                 @csrf
