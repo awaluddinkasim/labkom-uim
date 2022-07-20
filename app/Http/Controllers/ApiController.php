@@ -45,7 +45,7 @@ class ApiController extends Controller
     public function daftarJurusan()
     {
         $data = [
-            'daftarJurusan' => Fakultas::orderBy('nama')->get()
+            'daftarJurusan' => Fakultas::has('prodi')->orderBy('nama')->get()
         ];
 
         return response()->json($data, 200);
