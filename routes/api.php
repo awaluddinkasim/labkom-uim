@@ -18,5 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/jurusan', [ApiController::class, 'daftarJurusan']);
 
+Route::post('/register', [ApiController::class, 'register']);
+
 Route::post('/login', [AuthController::class, 'loginAPI']);
 Route::get('/logout', [AuthController::class, 'logoutAPI']);
