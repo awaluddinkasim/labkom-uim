@@ -44,7 +44,7 @@ class AuthController extends Controller
     {
         if (Rejected::where('nim', $request->nim)->first()) {
             return response()->json([
-                'message' => 'Akun kamu belum ditolak',
+                'message' => 'Akun kamu ditolak, silahkan daftar kembali',
                 'data' => $request->all()
             ], 401);
         } else {
