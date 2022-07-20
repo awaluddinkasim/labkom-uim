@@ -47,31 +47,30 @@ class AuthController extends Controller
                 'message' => 'Akun kamu ditolak, silahkan daftar kembali',
                 'data' => $request->all()
             ], 401);
-        } else {
-            $mahasiswa = User::where('nim', $request->nim)->first();
+        }
+        $mahasiswa = User::where('nim', $request->nim)->first();
 
-            if ($mahasiswa->active) {
-                if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
-                    $token = $mahasiswa->createToken('auth-user')->plainTextToken;
+        if ($mahasiswa && $mahasiswa->active) {
+            if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
+                $token = $mahasiswa->createToken('auth-user')->plainTextToken;
 
-                    return response()->json([
-                        'message' => 'berhasil',
-                        'token' => $token,
-                        'user' => $mahasiswa
-                    ], 200);
-                }
-            } else {
                 return response()->json([
-                    'message' => 'Akun kamu belum diverifikasi',
-                    'data' => $request->all()
-                ], 401);
+                    'message' => 'berhasil',
+                    'token' => $token,
+                    'user' => $mahasiswa
+                ], 200);
             }
-
+        } elseif ($mahasiswa && !$mahasiswa->active) {
             return response()->json([
-                'message' => 'Username atau Password salah',
+                'message' => 'Akun kamu belum diverifikasi',
                 'data' => $request->all()
             ], 401);
         }
+
+        return response()->json([
+            'message' => 'Username atau Password salah',
+            'data' => $request->all()
+        ], 401);
     }
 
     public function logoutAPI(Request $request)
