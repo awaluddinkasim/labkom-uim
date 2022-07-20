@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rejected;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,29 +42,36 @@ class AuthController extends Controller
 
     public function loginAPI(Request $request)
     {
-        $mahasiswa = User::where('nim', $request->nim)->first();
-
-        if ($mahasiswa->active) {
-            if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
-                $token = $mahasiswa->createToken('auth-user')->plainTextToken;
-
-                return response()->json([
-                    'message' => 'berhasil',
-                    'token' => $token,
-                    'user' => $mahasiswa
-                ], 200);
-            }
-        } else {
+        if (Rejected::where('nim', $request->nim)->first()) {
             return response()->json([
-                'message' => 'Akun belum aktif',
+                'message' => 'Akun kamu belum ditolak',
+                'data' => $request->all()
+            ], 401);
+        } else {
+            $mahasiswa = User::where('nim', $request->nim)->first();
+
+            if ($mahasiswa->active) {
+                if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
+                    $token = $mahasiswa->createToken('auth-user')->plainTextToken;
+
+                    return response()->json([
+                        'message' => 'berhasil',
+                        'token' => $token,
+                        'user' => $mahasiswa
+                    ], 200);
+                }
+            } else {
+                return response()->json([
+                    'message' => 'Akun kamu belum diverifikasi',
+                    'data' => $request->all()
+                ], 401);
+            }
+
+            return response()->json([
+                'message' => 'Username atau Password salah',
                 'data' => $request->all()
             ], 401);
         }
-
-        return response()->json([
-            'message' => 'Username atau Password salah',
-            'data' => $request->all()
-        ], 401);
     }
 
     public function logoutAPI(Request $request)

@@ -9,6 +9,7 @@ use App\Models\Dosen;
 use App\Models\Fakultas;
 use App\Models\Praktikum;
 use App\Models\Prodi;
+use App\Models\Rejected;
 use App\Models\Setting;
 use App\Models\Slip;
 use App\Models\User;
@@ -372,6 +373,9 @@ class AdminController extends Controller
             case 'verifikasi':
                 $mhs = User::find($request->id);
                 $mhs->active = '1';
+
+                Rejected::where('nim', $mhs->nim)->first()->delete();
+
                 $mhs->update();
 
                 return redirect()->route('admin.akun', 'mahasiswa')->with('success', 'Mahasiswa berhasil diverifikasi');
@@ -381,6 +385,11 @@ class AdminController extends Controller
                 if ($mhs->foto != 'default.png') {
                     File::delete(public_path('f/avatar/'.$mhs->foto));
                 }
+
+                $rejected = new Rejected();
+                $rejected->nim = $mhs->nim;
+                $rejected->save();
+
                 $mhs->delete();
 
                 return redirect()->route('admin.akun', 'mahasiswa')->with('success', 'Mahasiswa berhasil ditolak');
