@@ -21,4 +21,13 @@ Route::get('/jurusan', [ApiController::class, 'daftarJurusan']);
 Route::post('/register', [ApiController::class, 'register']);
 
 Route::post('/login', [AuthController::class, 'loginAPI']);
-Route::get('/logout', [AuthController::class, 'logoutAPI']);
+
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('/me', function(Request $request) {
+        return response()->json([
+            'user' => $request->user()
+        ]);
+    });
+
+    Route::get('/logout', [AuthController::class, 'logoutAPI']);
+});
