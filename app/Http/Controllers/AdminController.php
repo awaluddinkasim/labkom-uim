@@ -374,11 +374,6 @@ class AdminController extends Controller
                 $mhs = User::find($request->id);
                 $mhs->active = '1';
 
-                $rejected = Rejected::where('nim', $mhs->nim)->first();
-                if ($rejected) {
-                    $rejected->delete();
-                }
-
                 $mhs->update();
 
                 return redirect()->route('admin.akun', 'mahasiswa')->with('success', 'Mahasiswa berhasil diverifikasi');

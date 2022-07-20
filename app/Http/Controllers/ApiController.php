@@ -24,6 +24,11 @@ class ApiController extends Controller
             $mhs->id_prodi = $request->id_prodi;
             $mhs->save();
 
+            $rejected = Rejected::where('nim', $mhs->nim)->first();
+            if ($rejected) {
+                $rejected->delete();
+            }
+
             $foto->move(public_path('f/avatar'), $filename);
             return response()->json([
                 'message' => 'Berhasil mendaftar, akun kamu sedang menunggu verifikasi dari admin'
