@@ -50,8 +50,8 @@ class AuthController extends Controller
         }
         $mahasiswa = User::where('nim', $request->nim)->first();
 
-        if ($mahasiswa && $mahasiswa->active) {
-            if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
+        if ($mahasiswa && Hash::check($request->password, $mahasiswa->password)) {
+            if ($mahasiswa && $mahasiswa->active) {
                 $token = $mahasiswa->createToken('auth-user')->plainTextToken;
 
                 return response()->json([
@@ -59,12 +59,12 @@ class AuthController extends Controller
                     'token' => $token,
                     'user' => $mahasiswa
                 ], 200);
+            } elseif ($mahasiswa && !$mahasiswa->active) {
+                return response()->json([
+                    'message' => 'Akun belum terverifikasi',
+                    'data' => $request->all()
+                ], 401);
             }
-        } elseif ($mahasiswa && !$mahasiswa->active) {
-            return response()->json([
-                'message' => 'Akun kamu belum diverifikasi',
-                'data' => $request->all()
-            ], 401);
         }
 
         return response()->json([
