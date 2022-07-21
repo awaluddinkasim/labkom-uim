@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
+use App\Models\Rejected;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
