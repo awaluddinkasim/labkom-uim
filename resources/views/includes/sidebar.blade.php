@@ -14,6 +14,12 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            <li class="{{ Request::segment(2) == "informasi" ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.informasi') }}">
+                    <ion-icon name="newspaper"></ion-icon>
+                    <span>Informasi</span>
+                </a>
+            </li>
             <li class="nav-item dropdown {{ Request::segment(2) == "master" ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown">
                     <ion-icon name="apps"></ion-icon>

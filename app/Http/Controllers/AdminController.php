@@ -30,6 +30,13 @@ class AdminController extends Controller
         return view('admin.dashboard', $data);
     }
 
+    public function informasi()
+    {
+
+
+        return view('admin.informasi');
+    }
+
     public function masterData($jenis)
     {
         switch ($jenis) {
