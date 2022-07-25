@@ -44,7 +44,7 @@
                                     @foreach ($daftarInformasi as $informasi)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $informasi->judul }}</td>
+                                            <td>{{ Str::limit($informasi->judul, 25, '...') }}</td>
                                             <td>{{ $informasi->tanggal }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary btn-sm" onclick="document.location.href = '{{ route('admin.informasi' ) }}?id={{ $informasi->id }}'">
