@@ -7,6 +7,7 @@ use App\Models\DataPengampu;
 use App\Models\DataPraktikan;
 use App\Models\Dosen;
 use App\Models\Fakultas;
+use App\Models\Informasi;
 use App\Models\Praktikum;
 use App\Models\Prodi;
 use App\Models\Rejected;
@@ -30,11 +31,47 @@ class AdminController extends Controller
         return view('admin.dashboard', $data);
     }
 
-    public function informasi()
+    public function informasi(Request $request)
     {
+        if ($request->has('id')) {
+            $data = [
+                'informasi' => Informasi::find($request->id)
+            ];
 
+            return view('admin.informasi-edit', $data);
+        }
+        $data = [
+            'daftarInformasi' => Informasi::orderBy('created_at', 'DESC')->get()
+        ];
 
-        return view('admin.informasi');
+        return view('admin.informasi', $data);
+    }
+
+    public function informasiStore(Request $request)
+    {
+        $info = new Informasi();
+        $info->judul = $request->judul;
+        $info->konten = $request->konten;
+        $info->save();
+
+        return redirect()->route('admin.informasi')->with('success', 'Berhasil menambah informasi');
+    }
+
+    public function informasiUpdate(Request $request)
+    {
+        $info = Informasi::find($request->id);
+        $info->judul = $request->judul;
+        $info->konten = $request->konten;
+        $info->update();
+
+        return redirect()->route('admin.informasi')->with('success', 'Berhasil update informasi');
+    }
+
+    public function informasiDelete(Request $request)
+    {
+        Informasi::find($request->id)->delete();
+
+        return redirect()->route('admin.informasi')->with('success', 'Data informasi berhasil dihapus');
     }
 
     public function masterData($jenis)

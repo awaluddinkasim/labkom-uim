@@ -30,6 +30,9 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin', 'as' => 'admin.
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
 
     Route::get('/informasi', [AdminController::class, 'informasi'])->name('informasi');
+    Route::post('/informasi', [AdminController::class, 'informasiStore'])->name('informasi-store');
+    Route::put('/informasi/update', [AdminController::class, 'informasiUpdate'])->name('informasi-update');
+    Route::delete('/informasi', [AdminController::class, 'informasiDelete'])->name('informasi-delete');
 
     Route::get('/master/{jenis}', [AdminController::class, 'masterData'])->name('master');
     Route::post('/master/{jenis}', [AdminController::class, 'masterDataStore'])->name('master-store');
