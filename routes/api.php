@@ -29,5 +29,8 @@ Route::middleware('auth:sanctum')->group(function() {
         ]);
     });
 
+    Route::get('/informasi', [ApiController::class, 'daftarInformasi']);
+    Route::get('/praktikum', [ApiController::class, 'daftarInformasi']);
+
     Route::get('/logout', [AuthController::class, 'logoutAPI']);
 });

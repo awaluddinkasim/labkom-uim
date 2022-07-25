@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
+use App\Models\Informasi;
+use App\Models\Praktikum;
 use App\Models\Rejected;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -52,6 +54,24 @@ class ApiController extends Controller
     {
         $data = [
             'daftarJurusan' => Fakultas::has('prodi')->orderBy('nama')->get()
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function daftarInformasi()
+    {
+        $data = [
+            'daftarInformasi' => Informasi::whereYear('created_at', date('Y'))->orderBy('created_at', 'DESC')->get()
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function daftarPraktikum(Request $request)
+    {
+        $data = [
+            'daftarPraktikum' => Praktikum::where('id_prodi', $request->user()->id_prodi)->get()
         ];
 
         return response()->json($data, 200);
