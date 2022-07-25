@@ -36,6 +36,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul</th>
+                                        <th>Tanggal</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -44,6 +45,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $informasi->judul }}</td>
+                                            <td>{{ $informasi->tanggal }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-primary btn-sm" onclick="document.location.href = '{{ route('admin.informasi' ) }}?id={{ $informasi->id }}'">
                                                     <ion-icon name="open"></ion-icon>
